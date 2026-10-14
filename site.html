@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:#F7F9FA;font-family:'Manrope',sans-serif;-webkit-font-smoothing:antialiased;}
+  *{box-sizing:border-box;}
+  ::selection{background:#4FE3ED;color:#060a0f;}
+  a{color:inherit;text-decoration:none;}
+  a:hover{color:#4FE3ED;}
+  input::placeholder,select{font-family:'Manrope',sans-serif;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes pulseDot{0%,100%{opacity:1;}50%{opacity:.4;}}
+</style>
+</helmet>
+
+<div style="background:#F7F9FA;color:#10161C;overflow-x:hidden;position:relative;">
+
+  <!-- NAV -->
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:100;padding:{{navPadding}} 0;background:{{navBg}};backdrop-filter:blur(12px);border-bottom:1px solid rgba(79,227,237,.15);transition:padding .3s ease,background .3s ease;box-shadow:{{navShadow}};">
+    <div style="max-width:1240px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;">
+      <a href="#home" style="display:flex;align-items:center;">
+        <img src="uploads/PRO%20-PLAY%20X%20logo%20white%20and%20blue%20pdf.pdf_20250922_093405_0000.png" alt="ProPlayX" style="height:38px;width:auto;display:block;mix-blend-mode:screen;">
+      </a>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <button onclick="{{ toggleMenu }}" aria-label="Menu" style="background:transparent;border:1px solid rgba(79,227,237,.4);color:#4FE3ED;width:40px;height:40px;border-radius:4px;font-size:1.1rem;display:flex;align-items:center;justify-content:center;">
+          <i class="fas {{ menuIcon }}"></i>
+        </button>
+      </sc-if>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:center;gap:2.2rem;">
+          <a href="#about" style="font-family:'Manrope',sans-serif;font-size:.78rem;letter-spacing:.08em;color:#C7D3DA;">About</a>
+          <a href="#services" style="font-family:'Manrope',sans-serif;font-size:.78rem;letter-spacing:.08em;color:#C7D3DA;">Services</a>
+          <a href="#venues" style="font-family:'Manrope',sans-serif;font-size:.78rem;letter-spacing:.08em;color:#C7D3DA;">Centers</a>
+          <a href="#franchise" style="font-family:'Manrope',sans-serif;font-size:.78rem;letter-spacing:.08em;color:#C7D3DA;">Franchise</a>
+          <a href="#contact" style="background:#4FE3ED;color:#060a0f;font-family:'Manrope',sans-serif;font-size:.76rem;letter-spacing:.06em;padding:.65rem 1.3rem;border-radius:2px;font-weight:700;">Enquire</a>
+        </div>
+      </sc-if>
+    </div>
+    <sc-if value="{{ mobileMenuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:0;background:#0c1219;border-top:1px solid rgba(79,227,237,.15);">
+        <a href="#about" onclick="{{ closeMenu }}" style="padding:1rem 1.5rem;font-family:'Manrope',sans-serif;font-size:.85rem;letter-spacing:.06em;color:#C7D3DA;border-bottom:1px solid rgba(79,227,237,.08);">About</a>
+        <a href="#services" onclick="{{ closeMenu }}" style="padding:1rem 1.5rem;font-family:'Manrope',sans-serif;font-size:.85rem;letter-spacing:.06em;color:#C7D3DA;border-bottom:1px solid rgba(79,227,237,.08);">Services</a>
+        <a href="#venues" onclick="{{ closeMenu }}" style="padding:1rem 1.5rem;font-family:'Manrope',sans-serif;font-size:.85rem;letter-spacing:.06em;color:#C7D3DA;border-bottom:1px solid rgba(79,227,237,.08);">Centers</a>
+        <a href="#franchise" onclick="{{ closeMenu }}" style="padding:1rem 1.5rem;font-family:'Manrope',sans-serif;font-size:.85rem;letter-spacing:.06em;color:#C7D3DA;border-bottom:1px solid rgba(79,227,237,.08);">Franchise</a>
+        <a href="#contact" onclick="{{ closeMenu }}" style="padding:1rem 1.5rem;font-family:'Manrope',sans-serif;font-size:.85rem;letter-spacing:.06em;color:#4FE3ED;">Enquire &#8594;</a>
+      </div>
+    </sc-if>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" style="position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(180deg,#05080c 0%,#060a0f 55%,#0b1420 100%);color:#F7F9FA;overflow:hidden;padding:7.5rem 0 3rem;">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(120% 90% at 88% 0%,rgba(79,227,237,.16),transparent 55%);"></div>
+    <div style="max-width:1240px;margin:0 auto;padding:0 1.5rem;position:relative;z-index:2;width:100%;">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:3rem;">
+        <div style="flex:1 1 460px;min-width:0;animation:fadeUp .8s ease both;">
+          <div style="display:flex;align-items:center;gap:.6rem;font-family:'Manrope',sans-serif;font-size:.72rem;letter-spacing:.16em;color:#7FEAF0;margin-bottom:1.6rem;">
+            <span style="width:22px;height:1px;background:#4FE3ED;display:inline-block;"></span> Turnkey Sports Infrastructure — India
+          </div>
+          <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(2.4rem,5.2vw,4.2rem);line-height:1.04;margin:0 0 1.5rem;letter-spacing:-.01em;">
+            We build the court.<br>We run the club.
+          </h1>
+          <p style="color:#A6BAC4;font-size:1.1rem;max-width:480px;margin:0 0 2.3rem;line-height:1.7;">ProPlayX designs, constructs and operates premium pickleball, padel, badminton and turf facilities — then keeps them full, staffed and profitable through the Blu Racquet Club platform.</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;">
+            <a href="#services" style="background:#4FE3ED;color:#060a0f;font-family:'Manrope',sans-serif;font-size:.78rem;letter-spacing:.06em;padding:.9rem 1.7rem;border-radius:2px;font-weight:700;display:inline-flex;align-items:center;gap:.6rem;">See Construction Costing <i class="fas fa-arrow-right"></i></a>
+            <a href="#franchise" style="background:transparent;color:#F7F9FA;border:1px solid rgba(247,249,250,.3);font-family:'Manrope',sans-serif;font-size:.78rem;letter-spacing:.06em;padding:.9rem 1.7rem;border-radius:2px;">Explore Franchise</a>
+          </div>
+          <div style="display:flex;gap:2.4rem;flex-wrap:wrap;">
+            <div><b style="font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;color:#7FEAF0;display:block;line-height:1;">29</b><span style="font-family:'Manrope',sans-serif;font-size:.66rem;letter-spacing:.08em;color:#7C8E98;">Courts Live</span></div>
+            <div><b style="font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;color:#7FEAF0;display:block;line-height:1;">5</b><span style="font-family:'Manrope',sans-serif;font-size:.66rem;letter-spacing:.08em;color:#7C8E98;">Venues Operating</span></div>
+            <div><b style="font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;color:#7FEAF0;display:block;line-height:1;">3</b><span style="font-family:'Manrope',sans-serif;font-size:.66rem;letter-spacing:.08em;color:#7C8E98;">Cities · MMR &amp; Hyderabad</span></div>
+            <div><b style="font-family:'Bricolage Grotesque',sans-serif;font-size:2rem;color:#7FEAF0;display:block;line-height:1;">25+</b><span style="font-family:'Manrope',sans-serif;font-size:.66rem;letter-spacing:.08em;color:#7C8E98;">Clubs by 2028</span></div>
+          </div>
+        </div>
+        <div style="flex:1 1 380px;min-width:280px;position:relative;">
+          <div style="position:relative;border-radius:22px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.5);border:1px solid rgba(79,227,237,.25);aspect-ratio:4/5;">
+            <img src="uploads/WhatsApp%20Image%202026-08-17%20at%207.48.33%20AM.jpeg" alt="ProPlayX indoor padel court" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(6,10,15,.75) 100%);"></div>
+            <div style="position:absolute;bottom:1.4rem;left:1.4rem;right:1.4rem;display:flex;align-items:center;gap:.7rem;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#4FE3ED;animation:pulseDot 1.8s ease infinite;"></span>
+              <span style="font-family:'Manrope',sans-serif;font-size:.68rem;letter-spacing:.08em;color:#DCEBEE;">Covered Padel Court · Built by ProPlayX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPORTS STRIP -->
+  <section style="background:#0b1420;padding:1.8rem 0;border-bottom:1px solid rgba(79,227,237,.12);">
+    <div style="max-width:1240px;margin:0 auto;padding:0 1.5rem;display:flex;gap:2.4rem;flex-wrap:wrap;justify-content:center;">
+      <sc-for list="{{ sports }}" as="s" hint-placeholder-count="5">
+        <div style="display:flex;align-items:center;gap:.6rem;color:#9FB2BC;font-size:.92rem;font-weight:600;">
+          <i class="{{ s.icon }}" style="color:#4FE3ED;font-size:1.05rem;"></i>{{ s.name }}
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ABOUT / WHAT WE DO -->
+  <section id="about" style="padding:6.5rem 0;background:#F7F9FA;">
+    <div style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+      <div style="max-width:620px;margin-bottom:3.2rem;">
+        <div style="display:flex;align-items:center;gap:.6rem;font-family:'Manrope',sans-serif;font-size:.72rem;letter-spacing:.14em;color:#0E8F9C;margin-bottom:1rem;">
+          <span style="width:22px;height:1px;background:#0E8F9C;display:inline-block;"></span>Baseline — Who We Are
+        </div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(1.9rem,3.4vw,2.7rem);margin:0;color:#10161C;letter-spacing:-.01em;">Infrastructure and operations, under one roof.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.6rem;">
+        <div style="background:#fff;border:1px solid rgba(15,143,156,.18);border-radius:18px;padding:2.3rem;">
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;margin:0 0 .8rem;color:#10161C;">Pioneering sports infrastructure across India</h3>
+          <p style="color:#5B6670;font-size:.96rem;line-height:1.7;margin:0 0 1rem;">ProPlayX designs, constructs and operates world-class multi-sport facilities — from indoor badminton academies to outdoor pickleball and padel arenas — engineered to global standards.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+            <span style="background:#ECF0F3;color:#0b1420;border:1px solid rgba(15,143,156,.25);padding:.4rem .9rem;border-radius:30px;font-size:.78rem;font-weight:600;display:inline-flex;align-items:center;gap:.4rem;"><i class="fas fa-table-tennis-paddle-ball"></i> Pickleball</span>
+            <span style="background:#ECF0F3;color:#0b1420;border:1px solid rgba(15,143,156,.25);padding:.4rem .9rem;border-radius:30px;font-size:.78rem;font-weight:600;display:inline-flex;align-items:center;gap:.4rem;"><i class="fas fa-volleyball"></i> Padel</span>
+            <span style="background:#ECF0F3;color:#0b1420;border:1px solid rgba(15,143,156,.25);padding:.4rem .9rem;border-radius:30px;font-size:.78rem;font-weight:600;display:inline-flex;align-items:center;gap:.4rem;"><i class="fas fa-shuttlecock"></i> Badminton</span>
+            <span style="background:#ECF0F3;color:#0b1420;border:1px solid rgba(15,143,156,.25);padding:.4rem .9rem;border-radius:30px;font-size:.78rem;font-weight:600;display:inline-flex;align-items:center;gap:.4rem;"><i class="fas fa-baseball"></i> Cricket Turf</span>
+            <span style="background:#ECF0F3;color:#0b1420;border:1px solid rgba(15,143,156,.25);padding:.4rem .9rem;border-radius:30px;font-size:.78rem;font-weight:600;display:inline-flex;align-items:center;gap:.4rem;"><i class="fas fa-futbol"></i> Football Turf</span>
+          </div>
+        </div>
+        <div style="background:#0b1420;border:1px solid rgba(79,227,237,.25);border-radius:18px;padding:2.3rem;">
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;margin:0 0 .8rem;color:#F7F9FA;">A complete operations partner</h3>
+          <p style="color:#9FB2BC;font-size:.96rem;line-height:1.7;margin:0 0 1rem;">Setting up sports infra is half the job — running it profitably is the rest. We take charge of daily execution end to end:</p>
+          <ul style="color:#9FB2BC;font-size:.92rem;padding-left:1.2rem;margin:0;line-height:1.9;">
+            <li>App-based slot booking &amp; check-in</li>
+            <li>Coaching programs, tournaments &amp; corporate rentals</li>
+            <li>Standardized court &amp; equipment upkeep</li>
+            <li>Campaigns built to maximize utilization</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT / GEAR SHOWCASE -->
+  <section style="padding:0;background:#0b1420;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));">
+      <div style="position:relative;aspect-ratio:16/11;overflow:hidden;">
+        <img src="uploads/1.jpg" alt="Pro-Play X pickleball" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div style="background:#060a0f;color:#F7F9FA;padding:2.6rem 2.4rem;display:flex;flex-direction:column;justify-content:center;">
+        <div style="display:flex;align-items:center;gap:.5rem;font-family:'Manrope',sans-serif;font-size:.62rem;letter-spacing:.12em;color:#7FEAF0;margin-bottom:.8rem;">
+          <span style="width:16px;height:1px;background:#4FE3ED;display:inline-block;"></span>Signature Gear
+        </div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(1.2rem,1.9vw,1.5rem);margin:0 0 .7rem;letter-spacing:-.01em;">Pro-Play X paddles &amp; balls, built for the academy floor.</h2>
+        <p style="color:#9FB2BC;font-size:.82rem;line-height:1.65;margin:0;max-width:400px;">Carbon-fibre hybrid paddles and USAPA-spec balls, issued across every ProPlayX and Blu Racquet Club court — the same gear our coaches train on.</p>
+      </div>
+      <div style="position:relative;aspect-ratio:16/11;overflow:hidden;">
+        <img src="uploads/WhatsApp%20Image%202026-08-17%20at%207.50.35%20AM.jpeg" alt="Aerial view of ProPlayX courts" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+    </div>
+  </section>
+
+  <!-- FRANCHISE -->
+  <section id="franchise" style="padding:6.5rem 0;background:#F7F9FA;">
+    <div style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+      <div style="max-width:620px;margin-bottom:3.2rem;">
+        <div style="display:flex;align-items:center;gap:.6rem;font-family:'Manrope',sans-serif;font-size:.72rem;letter-spacing:.14em;color:#0E8F9C;margin-bottom:1rem;">
+          <span style="width:22px;height:1px;background:#0E8F9C;display:inline-block;"></span>Center Line — Own a Club
+        </div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(1.9rem,3.4vw,2.7rem);margin:0;color:#10161C;letter-spacing:-.01em;">The Blu Racquet Club concept</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.6rem;align-items:stretch;">
+        <div style="background:linear-gradient(160deg,#0b1420 0%,#05080c 100%);border-radius:18px;padding:2.6rem;color:#F7F9FA;position:relative;overflow:hidden;">
+          <span style="display:inline-block;border:1px solid #4FE3ED;color:#7FEAF0;font-family:'Manrope',sans-serif;font-size:.6rem;letter-spacing:.1em;padding:.3rem .7rem;border-radius:20px;margin-bottom:1rem;">New Concept</span>
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.4rem;margin:0 0 .9rem;">Blu Racquet Club</h3>
+          <p style="color:#9FB2BC;font-size:.95rem;line-height:1.7;margin:0 0 1rem;">ProPlayX's flagship multi-racket destination — padel, badminton and pickleball under one premium lifestyle brand.</p>
+          <p style="color:#9FB2BC;font-size:.95rem;line-height:1.7;margin:0;">Franchise opportunities are open across major metros and tier-2 cities, with full operational handholding from day one.</p>
+        </div>
+        <div style="background:#fff;border:1px solid rgba(15,143,156,.18);border-radius:18px;padding:2.6rem;">
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;margin:0 0 1.3rem;color:#10161C;">Two ways to invest</h3>
+          <div style="border-left:2px solid rgba(15,143,156,.3);padding-left:1.1rem;margin-bottom:1.4rem;">
+            <h4 style="font-size:.92rem;color:#0E8F9C;font-family:'Manrope',sans-serif;letter-spacing:.03em;margin:0 0 .4rem;">FOCO — Franchise Owned, Company Operated</h4>
+            <p style="font-size:.9rem;color:#5B6670;margin:0;line-height:1.6;">You invest in the infrastructure. ProPlayX runs day-to-day operations, marketing and staffing — effortless passive income.</p>
+          </div>
+          <div style="border-left:2px solid rgba(15,143,156,.3);padding-left:1.1rem;">
+            <h4 style="font-size:.92rem;color:#0E8F9C;font-family:'Manrope',sans-serif;letter-spacing:.03em;margin:0 0 .4rem;">FOFO — Franchise Owned, Franchise Operated</h4>
+            <p style="font-size:.9rem;color:#5B6670;margin:0;line-height:1.6;">You own and run the facility, backed by our vendor network, booking software, staff training and ongoing guidance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section style="padding:6rem 0;background:#0b1420;color:#F7F9FA;">
+    <div style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+      <div style="max-width:620px;margin-bottom:3rem;">
+        <div style="display:flex;align-items:center;gap:.6rem;font-family:'Manrope',sans-serif;font-size:.72rem;letter-spacing:.14em;color:#7FEAF0;margin-bottom:1rem;">
+          <span style="width:22px;height:1px;background:#4FE3ED;display:inline-block;"></span>2026 – 2028
+        </div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(1.9rem,3.4vw,2.7rem);margin:0;letter-spacing:-.01em;">Roadmap</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem;">
+        <sc-for list="{{ roadmap }}" as="r" hint-placeholder-count="4">
+          <div style="border-left:2px solid rgba(79,227,237,.35);padding-left:1.2rem;">
+            <div style="font-family:'Manrope',sans-serif;font-size:.72rem;letter-spacing:.08em;color:#4FE3ED;margin-bottom:.4rem;">{{ r.yr }}</div>
+            <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.05rem;margin:0 0 .5rem;color:#F7F9FA;">{{ r.title }}</h4>
+            <p style="color:#9FB2BC;font-size:.9rem;margin:0;line-height:1.6;">{{ r.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENUES -->
+  <section id="venues" style="padding:6.5rem 0;background:#F7F9FA;">
+    <div style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+      <div style="max-width:620px;margin-bottom:3rem;">
+        <div style="display:flex;align-items:center;gap:.6rem;font-family:'Manrope',sans-serif;font-size:.72rem;letter-spacing:.14em;color:#0E8F9C;margin-bottom:1rem;">
+          <span style="width:22px;height:1px;background:#0E8F9C;display:inline-block;"></span>On Court — Live Venues
+        </div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(1.9rem,3.4vw,2.7rem);margin:0;color:#10161C;letter-spacing:-.01em;">Our sports centers</h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-bottom:2.4rem;">
+        <div style="position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/10;">
+          <img src="uploads/1%20(3).png" alt="ProPlayX courts, aerial view" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div style="position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/10;">
+          <img src="uploads/3.jfif" alt="Lush Pickleball Academy tournament" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+      </div>
+
+      <h4 style="font-family:'Manrope',sans-serif;font-size:.8rem;letter-spacing:.08em;color:#5B6670;margin-bottom:1.2rem;">Operational</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;margin-bottom:2.8rem;">
+        <sc-for list="{{ venuesLive }}" as="v" hint-placeholder-count="5">
+          <div style="background:#fff;border:1px solid rgba(15,143,156,.18);border-radius:16px;padding:1.8rem;">
+            <span style="background:#DCF3E1;color:#1E7A45;font-family:'Manrope',sans-serif;font-size:.62rem;letter-spacing:.08em;padding:.28rem .65rem;border-radius:20px;display:inline-block;margin-bottom:.85rem;">Operational</span>
+            <h3 style="font-size:1.08rem;margin:0 0 .5rem;font-family:'Bricolage Grotesque',sans-serif;color:#10161C;">{{ v.name }}</h3>
+            <div style="font-family:'Manrope',sans-serif;font-size:.82rem;color:#0b1420;margin-bottom:.3rem;">{{ v.courts }}</div>
+            <p style="color:#5B6670;font-size:.86rem;margin-top:.7rem;margin-bottom:0;line-height:1.6;">{{ v.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+
+      <h4 style="font-family:'Manrope',sans-serif;font-size:.8rem;letter-spacing:.08em;color:#5B6670;margin-bottom:1.2rem;">Upcoming &amp; Future</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;">
+        <sc-for list="{{ venuesUpcoming }}" as="v" hint-placeholder-count="3">
+          <div style="background:#fff;border:1px solid rgba(15,143,156,.18);border-radius:16px;padding:1.8rem;">
+            <span style="background:{{ v.badgeBg }};color:{{ v.badgeText }};font-family:'Manrope',sans-serif;font-size:.62rem;letter-spacing:.08em;padding:.28rem .65rem;border-radius:20px;display:inline-block;margin-bottom:.85rem;">{{ v.status }}</span>
+            <h3 style="font-size:1.08rem;margin:0 0 .5rem;font-family:'Bricolage Grotesque',sans-serif;color:#10161C;">{{ v.name }}</h3>
+            <p style="color:#5B6670;font-size:.86rem;margin-top:.4rem;margin-bottom:0;line-height:1.6;">{{ v.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- COSTING -->
+  <section id="services" style="padding:6.5rem 0;background:#0b1420;color:#F7F9FA;">
+    <div style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+      <div style="max-width:620px;margin-bottom:3rem;">
+        <div style="display:flex;align-items:center;gap:.6rem;font-family:'Manrope',sans-serif;font-size:.72rem;letter-spacing:.14em;color:#7FEAF0;margin-bottom:1rem;">
+          <span style="width:22px;height:1px;background:#4FE3ED;display:inline-block;"></span>Spec Sheet
+        </div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(1.9rem,3.4vw,2.7rem);margin:0;letter-spacing:-.01em;">Turnkey construction costing</h2>
+      </div>
+      <div style="border-radius:16px;overflow-x:auto;border:1px solid rgba(79,227,237,.2);background:#060a0f;">
+        <div style="min-width:640px;">
+          <div style="display:grid;grid-template-columns:1.1fr 1fr 1.6fr 1.1fr;background:#05080c;">
+            <div style="color:#7FEAF0;font-family:'Manrope',sans-serif;font-size:.68rem;letter-spacing:.08em;padding:1.1rem 1.3rem;font-weight:500;">Sport</div>
+            <div style="color:#7FEAF0;font-family:'Manrope',sans-serif;font-size:.68rem;letter-spacing:.08em;padding:1.1rem 1.3rem;font-weight:500;">Dimensions</div>
+            <div style="color:#7FEAF0;font-family:'Manrope',sans-serif;font-size:.68rem;letter-spacing:.08em;padding:1.1rem 1.3rem;font-weight:500;">Surface / Material</div>
+            <div style="color:#7FEAF0;font-family:'Manrope',sans-serif;font-size:.68rem;letter-spacing:.08em;padding:1.1rem 1.3rem;font-weight:500;">Approx. Cost</div>
+          </div>
+          <sc-for list="{{ costRows }}" as="c" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:1.1fr 1fr 1.6fr 1.1fr;">
+              <div style="padding:1.05rem 1.3rem;font-size:.9rem;border-bottom:1px solid rgba(79,227,237,.1);color:#F7F9FA;font-weight:600;">{{ c.sport }}</div>
+              <div style="padding:1.05rem 1.3rem;font-size:.9rem;border-bottom:1px solid rgba(79,227,237,.1);color:#9FB2BC;">{{ c.dims }}</div>
+              <div style="padding:1.05rem 1.3rem;font-size:.9rem;border-bottom:1px solid rgba(79,227,237,.1);color:#9FB2BC;">{{ c.material }}</div>
+              <div style="padding:1.05rem 1.3rem;font-size:.9rem;border-bottom:1px solid rgba(79,227,237,.1);color:#4FE3ED;font-family:'Manrope',sans-serif;font-weight:600;">{{ c.cost }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIRECTOR -->
+  <section style="padding:6.5rem 0;background:#F7F9FA;">
+    <div style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+      <div style="max-width:620px;margin:0 auto 3rem;text-align:center;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:.6rem;font-family:'Manrope',sans-serif;font-size:.72rem;letter-spacing:.14em;color:#0E8F9C;margin-bottom:1rem;">Leadership</div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(1.9rem,3.4vw,2.7rem);margin:0;color:#10161C;letter-spacing:-.01em;">Director profile</h2>
+      </div>
+      <div style="max-width:860px;margin:0 auto;background:#fff;border:1px solid rgba(15,143,156,.18);border-radius:18px;padding:2.6rem;display:flex;gap:2.2rem;align-items:center;flex-wrap:wrap;box-shadow:0 20px 50px rgba(11,20,32,.08);">
+        <div style="width:100px;height:100px;border-radius:50%;background:linear-gradient(160deg,#0b1420,#05080c);color:#7FEAF0;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-size:1.6rem;flex-shrink:0;border:1px solid rgba(79,227,237,.35);">SSK</div>
+        <div style="flex:1 1 300px;">
+          <h3 style="margin:0 0 .2rem;font-family:'Bricolage Grotesque',sans-serif;color:#10161C;">Samrat S Kapur</h3>
+          <div style="font-family:'Manrope',sans-serif;font-size:.74rem;letter-spacing:.06em;color:#0E8F9C;margin-bottom:.8rem;">Founder &amp; CEO, ProPlayX</div>
+          <p style="color:#5B6670;margin:0;font-size:.94rem;line-height:1.7;">With over 25 years across business management, operations and sports infrastructure development, Samrat leads ProPlayX's vision to revolutionize racket-sports access across India.</p>
+          <a href="https://www.linkedin.com/in/samratskapur" target="_blank" style="display:inline-flex;align-items:center;gap:.5rem;margin-top:1rem;color:#10161C;font-weight:700;font-size:.85rem;border-bottom:1px solid #10161C;padding-bottom:2px;"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="padding:6.5rem 0;background:#0b1420;">
+    <div style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+      <div style="max-width:620px;margin-bottom:3rem;">
+        <div style="display:flex;align-items:center;gap:.6rem;font-family:'Manrope',sans-serif;font-size:.72rem;letter-spacing:.14em;color:#7FEAF0;margin-bottom:1rem;">
+          <span style="width:22px;height:1px;background:#4FE3ED;display:inline-block;"></span>Net — Let's Talk
+        </div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(1.9rem,3.4vw,2.7rem);margin:0;color:#F7F9FA;letter-spacing:-.01em;">Contact ProPlayX</h2>
+      </div>
+      <div style="border-radius:18px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.35);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
+        <div style="background:linear-gradient(165deg,#05080c 0%,#0b1420 100%);color:#F7F9FA;padding:3rem;">
+          <h3 style="color:#F7F9FA;margin:0 0 .6rem;font-family:'Bricolage Grotesque',sans-serif;">Reach out</h3>
+          <p style="color:#9FB2BC;margin:0 0 2rem;font-size:.94rem;">Have land, space, or want to build a facility? Talk with our team.</p>
+          <div style="display:flex;gap:1rem;margin-bottom:1.6rem;align-items:flex-start;">
+            <i class="fas fa-phone-alt" style="color:#4FE3ED;font-size:1.05rem;margin-top:3px;width:20px;"></i>
+            <div><strong style="display:block;font-size:.74rem;letter-spacing:.06em;font-family:'Manrope',sans-serif;color:#7FEAF0;margin-bottom:.25rem;">Phone</strong><p style="margin:0;color:#9FB2BC;font-size:.92rem;">+91 74000 14111 / +91 74000 15111</p></div>
+          </div>
+          <div style="display:flex;gap:1rem;margin-bottom:1.6rem;align-items:flex-start;">
+            <i class="fas fa-envelope" style="color:#4FE3ED;font-size:1.05rem;margin-top:3px;width:20px;"></i>
+            <div><strong style="display:block;font-size:.74rem;letter-spacing:.06em;font-family:'Manrope',sans-serif;color:#7FEAF0;margin-bottom:.25rem;">Email</strong><p style="margin:0;color:#9FB2BC;font-size:.92rem;">contact@proplayx.in</p></div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <i class="fas fa-map-marker-alt" style="color:#4FE3ED;font-size:1.05rem;margin-top:3px;width:20px;"></i>
+            <div><strong style="display:block;font-size:.74rem;letter-spacing:.06em;font-family:'Manrope',sans-serif;color:#7FEAF0;margin-bottom:.25rem;">Registered Office</strong><p style="margin:0;color:#9FB2BC;font-size:.92rem;">406, Aaradhya Primus Building, Near Thakur Mall, Dahisar East, Mumbai, MH</p></div>
+          </div>
+        </div>
+        <div style="background:#fff;padding:3rem;">
+          <form action="mailto:Proplayx.contact@gmail.com" method="post" enctype="text/plain">
+            <div style="margin-bottom:1.5rem;">
+              <label style="font-family:'Manrope',sans-serif;font-size:.7rem;letter-spacing:.08em;color:#5B6670;margin-bottom:.5rem;display:block;">Full Name</label>
+              <input type="text" placeholder="Enter your full name" required style="width:100%;border:none;border-bottom:1.5px solid rgba(16,22,28,.18);padding:.7rem .1rem;font-family:'Manrope',sans-serif;font-size:.95rem;background:transparent;outline:none;">
+            </div>
+            <div style="margin-bottom:1.5rem;">
+              <label style="font-family:'Manrope',sans-serif;font-size:.7rem;letter-spacing:.08em;color:#5B6670;margin-bottom:.5rem;display:block;">WhatsApp / Mobile Number</label>
+              <input type="tel" placeholder="Enter WhatsApp number" required style="width:100%;border:none;border-bottom:1.5px solid rgba(16,22,28,.18);padding:.7rem .1rem;font-family:'Manrope',sans-serif;font-size:.95rem;background:transparent;outline:none;">
+            </div>
+            <div style="margin-bottom:1.5rem;">
+              <label style="font-family:'Manrope',sans-serif;font-size:.7rem;letter-spacing:.08em;color:#5B6670;margin-bottom:.5rem;display:block;">Contact For</label>
+              <select required style="width:100%;border:none;border-bottom:1.5px solid rgba(16,22,28,.18);padding:.7rem .1rem;font-size:.95rem;background:transparent;outline:none;">
+                <option value="">Select requirement</option>
+                <option value="court-construction">Court Construction &amp; Design</option>
+                <option value="franchise">Blu Racquet Club Franchise Inquiry</option>
+                <option value="operations">Facility Management &amp; Operations</option>
+                <option value="rental">Land / Venue Rental Collaboration</option>
+                <option value="institutional">School / College Sports Infra</option>
+              </select>
+            </div>
+            <button type="submit" style="width:100%;justify-content:center;background:#4FE3ED;color:#060a0f;border:1px solid #4FE3ED;font-family:'Manrope',sans-serif;font-size:.8rem;letter-spacing:.06em;padding:.9rem 1.6rem;border-radius:2px;font-weight:700;display:flex;align-items:center;gap:.55rem;">Submit Inquiry <i class="fas fa-arrow-right"></i></button>
+            <p style="font-size:.72rem;color:#8B98A1;margin-top:.9rem;text-align:center;">Inquiries route automatically to Proplayx.contact@gmail.com</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#05080c;color:#8B98A1;padding:3.5rem 0 1.8rem;">
+    <div style="max-width:1240px;margin:0 auto;padding:0 1.5rem;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2.4rem;">
+        <div style="grid-column:span 2;max-width:320px;">
+          <img src="uploads/PRO%20-PLAY%20X%20logo%20white%20and%20blue%20pdf.pdf_20250922_093405_0000.png" alt="ProPlayX" style="height:100px;width:auto;display:block;mix-blend-mode:screen;margin-bottom:1rem;">
+          <p style="font-size:.85rem;margin:0 0 1.2rem;">Turnkey sports infrastructure and club operations, built for India.</p>
+          <div style="display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1.2rem;">
+            <a href="https://play.google.com/store" target="_blank" style="display:inline-flex;align-items:center;gap:.5rem;background:#12191f;color:#F7F9FA;padding:.5rem 1rem;border-radius:6px;font-size:.78rem;font-weight:600;"><i class="fab fa-google-play"></i> Google Play</a>
+            <a href="https://www.apple.com/app-store/" target="_blank" style="display:inline-flex;align-items:center;gap:.5rem;background:#12191f;color:#F7F9FA;padding:.5rem 1rem;border-radius:6px;font-size:.78rem;font-weight:600;"><i class="fab fa-apple"></i> App Store</a>
+          </div>
+          <div style="display:flex;gap:.9rem;">
+            <a href="https://www.instagram.com/pro.playx?igsh=MTZhem83Y2lpcmNvYw==" target="_blank" aria-label="Instagram" style="color:#9FB2BC;font-size:1.05rem;">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" style="color:#9FB2BC;font-size:1.05rem;">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn" style="color:#9FB2BC;font-size:1.05rem;">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://youtube.com/@pro.play.x?si=DH4se0Ho47_W3YVy" target="_blank" aria-label="YouTube" style="color:#9FB2BC;font-size:1.05rem;">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div style="color:#F7F9FA;font-weight:700;font-size:.85rem;margin-bottom:1.1rem;">Quick Links</div>
+          <div style="display:flex;flex-direction:column;gap:.75rem;">
+            <a href="#home" style="font-size:.85rem;">Home</a>
+            <a href="#about" style="font-size:.85rem;">About Us</a>
+            <a href="#services" style="font-size:.85rem;">Services</a>
+            <a href="#venues" style="font-size:.85rem;">Sports Centers</a>
+            <a href="#contact" style="font-size:.85rem;">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div style="color:#F7F9FA;font-weight:700;font-size:.85rem;margin-bottom:1.1rem;">Our Courts</div>
+          <div style="display:flex;flex-direction:column;gap:.75rem;">
+            <a href="#venues" style="font-size:.85rem;">KBP College, Thane</a>
+            <a href="#venues" style="font-size:.85rem;">Lush, Mira Road</a>
+            <a href="#venues" style="font-size:.85rem;">Celebration Club, Andheri</a>
+            <a href="#venues" style="font-size:.85rem;">Pikl, Hyderabad</a>
+            <a href="#venues" style="font-size:.85rem;">Blu Racquet Club</a>
+          </div>
+        </div>
+        <div>
+          <div style="color:#F7F9FA;font-weight:700;font-size:.85rem;margin-bottom:1.1rem;">Resources</div>
+          <div style="display:flex;flex-direction:column;gap:.75rem;">
+            <a href="#franchise" style="font-size:.85rem;">Franchise Enquiry</a>
+            <a href="#services" style="font-size:.85rem;">Construction Costing</a>
+            <a href="#" style="font-size:.85rem;">Blog</a>
+            <a href="#" style="font-size:.85rem;">Careers</a>
+            <a href="#" style="font-size:.85rem;">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:.78rem;color:#5A6670;border-top:1px solid rgba(79,227,237,.12);padding-top:1.4rem;margin-top:1.8rem;">© 2026 ProPlayX Private Limited. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/917400014111" target="_blank" aria-label="Chat on WhatsApp" style="position:fixed;bottom:1.8rem;right:1.8rem;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 12px 30px rgba(0,0,0,.35);z-index:200;">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { scrolled: false, mobileMenuOpen: false, isMobile: false };
+
+  componentDidMount() {
+    this._onScroll = () => this.setState({ scrolled: window.scrollY > 40 });
+    this._onResize = () => this.setState({ isMobile: window.innerWidth < 880 });
+    window.addEventListener('scroll', this._onScroll);
+    window.addEventListener('resize', this._onResize);
+    this._onResize();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+  }
+  toggleMenu = () => this.setState(s => ({ mobileMenuOpen: !s.mobileMenuOpen }));
+  closeMenu = () => this.setState({ mobileMenuOpen: false });
+
+  renderVals() {
+    const sports = [
+      { name: 'Pickleball', icon: 'fas fa-table-tennis-paddle-ball' },
+      { name: 'Padel', icon: 'fas fa-volleyball' },
+      { name: 'Badminton', icon: 'fas fa-shuttlecock' },
+      { name: 'Cricket Turf', icon: 'fas fa-baseball' },
+      { name: 'Football Turf', icon: 'fas fa-futbol' },
+    ];
+    const roadmap = [
+      { yr: '100+ Courts', title: 'Tier-1 & Tier-2 expansion', desc: 'Expanding pickleball, padel and badminton facilities into new metros and growth cities.' },
+      { yr: '25+ Clubs', title: 'Blu Racquet Club rollout', desc: 'Opening flagship clubs nationwide through the FOCO and FOFO franchise models.' },
+      { yr: '50+ Institutions', title: 'School & developer partnerships', desc: 'Collaborating with schools, colleges and real estate developers to activate underused land.' },
+      { yr: 'Ongoing', title: 'Tech-driven engagement', desc: 'State-level leagues, dynamic app features and AI-assisted skill tracking for every player.' },
+    ];
+    const venuesLive = [
+      { name: 'KBP College — Thane', courts: '3 Pickleball Courts', desc: 'Outdoor acrylic courts hosting daily academy coaching and recreational matchplay.' },
+      { name: 'Lush — Mira Road', courts: '8 Pickleball · 4 Badminton', desc: 'A premier mega multi-racket club hosting regional leagues and tournament matches.' },
+      { name: 'Celebration Club — Andheri', courts: '5 Pickleball Courts', desc: 'Lokhandwala, Andheri West — home to high-profile doubles tournaments.' },
+      { name: 'Pikl — Banjara Hills, Hyderabad', courts: '2 Pickleball Courts', desc: 'Joint-venue facility bringing elite racket sports to a prime Hyderabad location.' },
+      { name: 'Blu Racquet Club — Mira Road', courts: '4 Badminton · 2 Pickleball · 1 Padel', desc: 'Flagship venue near Gaurav Residency, Kanakia Mira Road.' },
+    ];
+    const venuesUpcoming = [
+      { name: 'Jaipur Center', status: 'Opening Soon', badgeBg: '#FBEFD9', badgeText: '#A8791E', desc: 'A world-class pickleball hub expanding our footprint into Rajasthan.' },
+      { name: 'Ghatkopar, Mumbai', status: 'In Pipeline', badgeBg: '#EEE9DC', badgeText: '#8A7B57', desc: 'New multi-sport court infrastructure planned across Ghatkopar East and West.' },
+      { name: 'Navi Mumbai & Virar', status: 'In Pipeline', badgeBg: '#EEE9DC', badgeText: '#8A7B57', desc: 'Modern racket sports facilities expanding access across the MMR region.' },
+    ];
+    const costRows = [
+      { sport: 'Pickleball Court', dims: '44 ft × 20 ft', material: '8-layer cushion acrylic, USAPA spec', cost: '₹3.5L – ₹6.5L / court' },
+      { sport: 'Padel Tennis Court', dims: '20m × 10m', material: '12mm toughened glass, steel frame, fibrillated turf', cost: '₹18L – ₹25L / court' },
+      { sport: 'Badminton Court', dims: '44 ft × 20 ft', material: 'BWF-approved teak wood cushion / synthetic PVC', cost: '₹4.5L – ₹8L / court' },
+      { sport: 'Box Cricket Turf', dims: '60 ft × 40 ft', material: '50mm FIFA-quality artificial grass, enclosure netting', cost: '₹6L – ₹12L / setup' },
+      { sport: 'Football Turf', dims: '5-a-side / 7-a-side', material: '50mm UV-stabilized monofilament turf & infill', cost: '₹80 – ₹120 / sq. ft.' },
+    ];
+
+    return {
+      navBg: this.state.scrolled ? 'rgba(5,8,12,.95)' : 'rgba(5,8,12,.5)',
+      navPadding: this.state.scrolled ? '.6rem' : '1.3rem',
+      navShadow: this.state.scrolled ? '0 10px 30px rgba(0,0,0,.3)' : 'none',
+      isMobile: this.state.isMobile,
+      isDesktop: !this.state.isMobile,
+      mobileMenuOpen: this.state.isMobile && this.state.mobileMenuOpen,
+      menuIcon: this.state.mobileMenuOpen ? 'fa-xmark' : 'fa-bars',
+      toggleMenu: this.toggleMenu,
+      closeMenu: this.closeMenu,
+      sports, roadmap, venuesLive, venuesUpcoming, costRows,
+    };
+  }
+}
+</script>
+</body>
+</html>
