@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { playClickSound } from '../utils/audio';
 
 export default function Navbar() {
@@ -12,7 +13,7 @@ export default function Navbar() {
     };
 
     const handleResize = () => {
-      const mobile = window.innerWidth < 960;
+      const mobile = window.innerWidth < 1024;
       setIsMobile(mobile);
       if (!mobile) setMobileMenuOpen(false);
     };
@@ -36,9 +37,21 @@ export default function Navbar() {
     setMobileMenuOpen(false);
   };
 
-  const navBg = scrolled ? 'rgba(5, 8, 12, 0.95)' : 'rgba(5, 8, 12, 0.6)';
-  const navPadding = scrolled ? '0.65rem' : '1.3rem';
+  const navBg = scrolled ? 'rgba(5, 8, 12, 0.96)' : 'rgba(5, 8, 12, 0.75)';
+  const navPadding = scrolled ? '0.65rem' : '1.25rem';
   const navShadow = scrolled ? '0 10px 30px rgba(0, 0, 0, 0.5)' : 'none';
+
+  const navItemStyle = ({ isActive }) => ({
+    fontFamily: "'Manrope', sans-serif",
+    fontSize: '.82rem',
+    letterSpacing: '.06em',
+    color: isActive ? '#4FE3ED' : '#C7D3DA',
+    fontWeight: isActive ? 800 : 600,
+    position: 'relative',
+    paddingBottom: '4px',
+    borderBottom: isActive ? '2px solid #4FE3ED' : '2px solid transparent',
+    transition: 'all 0.2s ease',
+  });
 
   return (
     <nav
@@ -50,8 +63,8 @@ export default function Navbar() {
         zIndex: 100,
         padding: `${navPadding} 0`,
         background: navBg,
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
+        backdropFilter: 'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
         borderBottom: '1px solid rgba(79, 227, 237, 0.15)',
         transition: 'padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease',
         boxShadow: navShadow,
@@ -67,7 +80,8 @@ export default function Navbar() {
           justifyContent: 'space-between',
         }}
       >
-        <a href="#home" style={{ display: 'flex', alignItems: 'center' }}>
+        {/* Logo */}
+        <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
           <img
             src="/uploads/PRO%20-PLAY%20X%20logo%20white%20and%20blue%20pdf.pdf_20250922_093405_0000.png"
             alt="ProPlayX"
@@ -78,7 +92,7 @@ export default function Navbar() {
               mixBlendMode: 'screen',
             }}
           />
-        </a>
+        </Link>
 
         {/* Mobile Hamburger Button */}
         {isMobile && (
@@ -105,98 +119,43 @@ export default function Navbar() {
 
         {/* Desktop Nav Items */}
         {!isMobile && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.8rem' }}>
-            <a
-              href="#about"
-              style={{
-                fontFamily: "'Manrope', sans-serif",
-                fontSize: '.78rem',
-                letterSpacing: '.08em',
-                color: '#C7D3DA',
-                fontWeight: 600,
-              }}
-            >
-              About
-            </a>
-            <a
-              href="#customizer"
-              style={{
-                fontFamily: "'Manrope', sans-serif",
-                fontSize: '.78rem',
-                letterSpacing: '.08em',
-                color: '#4FE3ED',
-                fontWeight: 700,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '.35rem',
-              }}
-            >
-              <i className="fas fa-wand-magic-sparkles" style={{ fontSize: '.7rem' }}></i>
-              Court Studio
-            </a>
-            <a
-              href="#services"
-              style={{
-                fontFamily: "'Manrope', sans-serif",
-                fontSize: '.78rem',
-                letterSpacing: '.08em',
-                color: '#C7D3DA',
-                fontWeight: 600,
-              }}
-            >
-              Costing
-            </a>
-            <a
-              href="#venues"
-              style={{
-                fontFamily: "'Manrope', sans-serif",
-                fontSize: '.78rem',
-                letterSpacing: '.08em',
-                color: '#C7D3DA',
-                fontWeight: 600,
-              }}
-            >
-              Centers
-            </a>
-            <a
-              href="#franchise"
-              style={{
-                fontFamily: "'Manrope', sans-serif",
-                fontSize: '.78rem',
-                letterSpacing: '.08em',
-                color: '#C7D3DA',
-                fontWeight: 600,
-              }}
-            >
-              Franchise
-            </a>
-            <a
-              href="#faq"
-              style={{
-                fontFamily: "'Manrope', sans-serif",
-                fontSize: '.78rem',
-                letterSpacing: '.08em',
-                color: '#C7D3DA',
-                fontWeight: 600,
-              }}
-            >
-              FAQs
-            </a>
-            <a
-              href="#contact"
+          <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+            <NavLink to="/" end style={navItemStyle}>
+              Main Page
+            </NavLink>
+
+            <NavLink to="/franchise" style={navItemStyle}>
+              Franchise Options
+            </NavLink>
+
+            <NavLink to="/construction" style={navItemStyle}>
+              Court Costing &amp; Construction
+            </NavLink>
+
+            <NavLink to="/about" style={navItemStyle}>
+              About Us
+            </NavLink>
+
+            <NavLink to="/contact" style={navItemStyle}>
+              Contact Us
+            </NavLink>
+
+            <Link
+              to="/contact"
               style={{
                 background: '#4FE3ED',
                 color: '#060a0f',
                 fontFamily: "'Manrope', sans-serif",
-                fontSize: '.76rem',
+                fontSize: '.78rem',
                 letterSpacing: '.06em',
-                padding: '.65rem 1.3rem',
+                padding: '.65rem 1.4rem',
                 borderRadius: '2px',
                 fontWeight: 800,
+                boxShadow: '0 4px 15px rgba(79, 227, 237, 0.3)',
               }}
             >
               Enquire
-            </a>
+            </Link>
           </div>
         )}
       </div>
@@ -213,105 +172,108 @@ export default function Navbar() {
             marginTop: '0.6rem',
           }}
         >
-          <a
-            href="#about"
+          <NavLink
+            to="/"
+            end
             onClick={closeMenu}
-            style={{
+            style={({ isActive }) => ({
               padding: '1rem 1.5rem',
               fontFamily: "'Manrope', sans-serif",
-              fontSize: '.85rem',
+              fontSize: '.9rem',
               letterSpacing: '.06em',
-              color: '#C7D3DA',
+              color: isActive ? '#4FE3ED' : '#C7D3DA',
+              fontWeight: isActive ? 800 : 600,
               borderBottom: '1px solid rgba(79, 227, 237, 0.08)',
-            }}
+              background: isActive ? 'rgba(79, 227, 237, 0.05)' : 'transparent',
+            })}
           >
-            About
-          </a>
-          <a
-            href="#customizer"
+            Main Page (What ProPlayX Does)
+          </NavLink>
+
+          <NavLink
+            to="/franchise"
             onClick={closeMenu}
-            style={{
+            style={({ isActive }) => ({
               padding: '1rem 1.5rem',
               fontFamily: "'Manrope', sans-serif",
-              fontSize: '.85rem',
+              fontSize: '.9rem',
               letterSpacing: '.06em',
-              color: '#4FE3ED',
-              fontWeight: 700,
+              color: isActive ? '#4FE3ED' : '#C7D3DA',
+              fontWeight: isActive ? 800 : 600,
               borderBottom: '1px solid rgba(79, 227, 237, 0.08)',
-            }}
+              background: isActive ? 'rgba(79, 227, 237, 0.05)' : 'transparent',
+            })}
           >
-            Court Studio ✨
-          </a>
-          <a
-            href="#services"
+            Page 1: Franchise Options
+          </NavLink>
+
+          <NavLink
+            to="/construction"
             onClick={closeMenu}
-            style={{
+            style={({ isActive }) => ({
               padding: '1rem 1.5rem',
               fontFamily: "'Manrope', sans-serif",
-              fontSize: '.85rem',
+              fontSize: '.9rem',
               letterSpacing: '.06em',
-              color: '#C7D3DA',
+              color: isActive ? '#4FE3ED' : '#C7D3DA',
+              fontWeight: isActive ? 800 : 600,
               borderBottom: '1px solid rgba(79, 227, 237, 0.08)',
-            }}
+              background: isActive ? 'rgba(79, 227, 237, 0.05)' : 'transparent',
+            })}
           >
-            Costing Spec Sheet
-          </a>
-          <a
-            href="#venues"
+            Page 2: Court Costing &amp; Construction
+          </NavLink>
+
+          <NavLink
+            to="/about"
             onClick={closeMenu}
-            style={{
+            style={({ isActive }) => ({
               padding: '1rem 1.5rem',
               fontFamily: "'Manrope', sans-serif",
-              fontSize: '.85rem',
+              fontSize: '.9rem',
               letterSpacing: '.06em',
-              color: '#C7D3DA',
+              color: isActive ? '#4FE3ED' : '#C7D3DA',
+              fontWeight: isActive ? 800 : 600,
               borderBottom: '1px solid rgba(79, 227, 237, 0.08)',
-            }}
+              background: isActive ? 'rgba(79, 227, 237, 0.05)' : 'transparent',
+            })}
           >
-            Sports Centers
-          </a>
-          <a
-            href="#franchise"
+            Page 3: About Us
+          </NavLink>
+
+          <NavLink
+            to="/contact"
             onClick={closeMenu}
-            style={{
+            style={({ isActive }) => ({
               padding: '1rem 1.5rem',
               fontFamily: "'Manrope', sans-serif",
-              fontSize: '.85rem',
+              fontSize: '.9rem',
               letterSpacing: '.06em',
-              color: '#C7D3DA',
+              color: isActive ? '#4FE3ED' : '#C7D3DA',
+              fontWeight: isActive ? 800 : 600,
               borderBottom: '1px solid rgba(79, 227, 237, 0.08)',
-            }}
+              background: isActive ? 'rgba(79, 227, 237, 0.05)' : 'transparent',
+            })}
           >
-            Franchise Models
-          </a>
-          <a
-            href="#faq"
+            Page 4: Contact Us
+          </NavLink>
+
+          <Link
+            to="/contact"
             onClick={closeMenu}
             style={{
-              padding: '1rem 1.5rem',
+              padding: '1.1rem 1.5rem',
               fontFamily: "'Manrope', sans-serif",
-              fontSize: '.85rem',
+              fontSize: '.9rem',
               letterSpacing: '.06em',
-              color: '#C7D3DA',
-              borderBottom: '1px solid rgba(79, 227, 237, 0.08)',
-            }}
-          >
-            FAQs
-          </a>
-          <a
-            href="#contact"
-            onClick={closeMenu}
-            style={{
-              padding: '1rem 1.5rem',
-              fontFamily: "'Manrope', sans-serif",
-              fontSize: '.85rem',
-              letterSpacing: '.06em',
-              color: '#4FE3ED',
+              color: '#060a0f',
+              background: '#4FE3ED',
               fontWeight: 800,
+              textAlign: 'center',
             }}
           >
             Enquire Now &#8594;
-          </a>
+          </Link>
         </div>
       )}
     </nav>
