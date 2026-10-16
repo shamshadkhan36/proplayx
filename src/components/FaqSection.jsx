@@ -3,24 +3,29 @@ import { playClickSound } from '../utils/audio';
 
 const FAQS = [
   {
+    q: 'What is the turnkey capex to build a single pickleball court?',
+    a: 'According to our official ProPlayX FOCO proposal, a turnkey regulation pickleball court (~2,000 sq. ft. footprint) costs ₹4,89,000. This includes civil sub-base (asphalt @ ₹120/sq ft: ₹2.40L), 5-layer synthetic acrylic surface with line marking (@ ₹55/sq ft: ₹1.10L), 20ft high perimeter netting (₹55k), professional center net system (₹19k), tournament sports floodlighting (₹45k), and court branding (₹20k).',
+    category: 'Construction',
+  },
+  {
+    q: 'How does the FOCO commercial model work and what are the two options?',
+    a: 'In the FOCO (Franchise Owned, Company Operated) model, you own the court physical asset while ProPlayX handles all daily operations, tech, staffing, and revenue generation. We offer two transparent structures: Option A is a 75% / 25% Net Profit Share (75% to Investor, 25% to PPX after operating expenses). Option B is a 10% Top-Line Management Fee on gross venue revenue with 100% of residual operating profits retained by the owner.',
+    category: 'Commercials',
+  },
+  {
+    q: 'What are the 6 core deliverables managed by ProPlayX under FOCO?',
+    a: 'ProPlayX takes full end-to-end responsibility across: (1) Design & Turnkey Construction, (2) PPX Booking Tech Platform with app integration, (3) Day-to-Day Operations & Staffing, (4) Financial & Accounting Management with monthly reporting, (5) Hyperlocal Marketing & Community Promotion, and (6) Corporate Events, Leagues & Tournaments.',
+    category: 'Operations',
+  },
+  {
     q: 'How much land or space is required to build a pickleball or padel court?',
     a: 'A single regulation pickleball court requires approximately 1,800 to 2,000 sq. ft. including standard player runoffs (court lines are 44 ft × 20 ft). A panoramic padel tennis court requires a 20m × 10m enclosure (approx. 2,400 sq. ft.) with at least 6m vertical clearance. Surplus terraces, warehouses, schools, or open commercial ground can be activated.',
     category: 'Construction',
   },
   {
     q: 'How long does turnkey court construction take from start to finish?',
-    a: 'Standard acrylic pickleball courts typically take 18 to 28 days depending on base concrete readiness. Padel courts take 25 to 35 days, including toughened 12mm glass installation, steel framework, and infill turf laydown. We provide day-by-day project management and transparent material tracking.',
+    a: 'Standard acrylic pickleball courts typically take 18 to 28 days depending on base readiness. Padel courts take 25 to 35 days, including toughened 12mm glass installation, steel framework, and infill turf laydown. We provide day-by-day project management and transparent material tracking.',
     category: 'Construction',
-  },
-  {
-    q: 'What operational services does ProPlayX provide for clubs?',
-    a: 'ProPlayX provides end-to-end sports management: certified coaching academies, regional tournaments, corporate league rentals, app-based player bookings, proactive court maintenance, and equipment upkeep across all sports venues.',
-    category: 'Operations',
-  },
-  {
-    q: 'How does the FOCO (Franchise Owned, Company Operated) model work?',
-    a: 'In the FOCO model, you provide the space or fund the physical construction of the courts. ProPlayX deploys our complete operational team: certified staff, coaching curriculum, tournament calendar, app booking infrastructure, and court maintenance, handling the full physical workload.',
-    category: 'Operations',
   },
   {
     q: 'Are ProPlayX courts certified for official tournaments?',

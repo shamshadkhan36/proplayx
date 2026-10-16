@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import CourtCapexTable from '../components/CourtCapexTable';
 import CostingTable from '../components/CostingTable';
 import CourtCustomizer from '../components/CourtCustomizer';
 import ContactSection from '../components/ContactSection';
+import { contactInfo } from '../data/content';
 
 const PROCESS_STEPS = [
   {
@@ -11,23 +13,25 @@ const PROCESS_STEPS = [
   },
   {
     step: '02',
-    title: 'Civil Concrete Sub-Base & Drainage',
-    desc: 'Precision leveling, reinforced PCC/RCC sub-base, and perimeter drainage channels preventing any water stagnation even during peak monsoon rains.',
+    title: 'Civil Concrete / Asphalt Base Preparation',
+    desc: 'Precision leveling and asphalt base prep (Rs 120/sq ft) with perimeter drainage channels preventing any water stagnation even during peak monsoon rains.',
   },
   {
     step: '03',
-    title: 'Surface Application & Glass Framing',
-    desc: '8-layer USAPA cushion acrylic flooring or 12mm FIP-certified toughened panoramic glass panels and laser-cut hot-dip galvanized steel framing.',
+    title: '5-Layer Synthetic Surface Application',
+    desc: 'Specialized 5-layer synthetic acrylic court surface (Rs 55/sq ft) with tournament color pigmentation, UV resistance, and USAPA-regulation ball bounce.',
   },
   {
     step: '04',
-    title: 'Lighting, Nets & Tournament Handover',
-    desc: 'Installation of 500-lux glare-free LED floodlights, heavy-duty tournament nets, official line markings, and quality certificate handover.',
+    title: 'Lighting, Perimeter Nets & Handover',
+    desc: 'Installation of 500-lux glare-free LED luminaires and poles, 20ft perimeter safety nets, heavy-duty center net systems, and official court branding.',
   },
 ];
 
 export default function ConstructionPage() {
-  const [customSpec, setCustomSpec] = useState('Court Construction & Design');
+  const [customSpec, setCustomSpec] = useState(
+    'ProPlayX Single Court Turnkey Construction Spec (₹4.89L Base)'
+  );
 
   const handleApplyCustomization = (specText) => {
     setCustomSpec(specText);
@@ -83,12 +87,12 @@ export default function ConstructionPage() {
               lineHeight: 1.7,
             }}
           >
-            From civil earthworks to final tournament net handover. Transparent costing, global federation specifications (USAPA, FIP, BWF), and rapid 18 to 35-day project delivery across India.
+            Standardized single court setup at <strong>₹4,89,000</strong> per court (~2,000 sq. ft. footprint). Engineered to competitive USAPA &amp; international standards with complete civil works, 5-layer synthetic surfaces, and tournament sports lighting.
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <a
-              href="#services"
+              href="#capex-table"
               style={{
                 background: '#4FE3ED',
                 color: '#060a0f',
@@ -96,35 +100,49 @@ export default function ConstructionPage() {
                 borderRadius: '2px',
                 fontWeight: 800,
                 fontSize: '.85rem',
+                textDecoration: 'none',
               }}
             >
-              See Pricing Spec Sheet
+              See Single Court Costing (₹4.89L)
             </a>
             <a
-              href="#customizer"
+              href={contactInfo.businessPlanPdf}
+              download="ProPlayX_FOCO_Business_Plan.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
-                background: 'transparent',
-                color: '#F7F9FA',
-                border: '1px solid rgba(255, 255, 255, 0.3)',
+                background: 'rgba(79, 227, 237, 0.12)',
+                color: '#7FEAF0',
+                border: '1px solid #4FE3ED',
                 padding: '.85rem 1.6rem',
                 borderRadius: '2px',
-                fontWeight: 600,
+                fontWeight: 700,
                 fontSize: '.85rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '.5rem',
+                textDecoration: 'none',
               }}
             >
-              Design Your Court Studio ✨
+              <i className="fas fa-file-pdf"></i>
+              <span>Download Costing PDF</span>
             </a>
           </div>
         </div>
       </section>
 
-      {/* 1. Official Turnkey Costing Spec Sheet */}
-      <CostingTable />
+      {/* 1. Official Single Court Costing Breakdown (Page 3 of Proposal) */}
+      <div id="capex-table">
+        <CourtCapexTable />
+      </div>
 
       {/* 2. Interactive Court Design Studio */}
       <CourtCustomizer onSelectCustomization={handleApplyCustomization} />
 
-      {/* 3. Engineering & Construction Process */}
+      {/* 3. Multi-Sport Turnkey Overview */}
+      <CostingTable />
+
+      {/* 4. Engineering & Construction Protocol */}
       <section style={{ padding: '6.5rem 0', background: '#F7F9FA', color: '#10161C' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '0 1.5rem' }}>
           <div style={{ maxWidth: '640px', marginBottom: '3.2rem' }}>
@@ -156,7 +174,7 @@ export default function ConstructionPage() {
                 lineHeight: 1.15,
               }}
             >
-              Four-stage turnkey delivery process
+              Standardized buildout methodology
             </h2>
           </div>
 
@@ -211,7 +229,7 @@ export default function ConstructionPage() {
         </div>
       </section>
 
-      {/* 4. Dedicated Construction Inquiry Form */}
+      {/* 5. Dedicated Construction Inquiry Form */}
       <ContactSection prefilledSpec={customSpec} />
     </div>
   );

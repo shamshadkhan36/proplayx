@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import Franchise from '../components/Franchise';
+import PpxDeliverables from '../components/PpxDeliverables';
+import UnitEconomics from '../components/UnitEconomics';
 import FranchiseComparator from '../components/FranchiseComparator';
 import Roadmap from '../components/Roadmap';
 import ContactSection from '../components/ContactSection';
+import { contactInfo } from '../data/content';
 
 export default function FranchisePage() {
   const [selectedFranchiseModel, setSelectedFranchiseModel] = useState(
-    'Blu Racquet Club Franchise Inquiry'
+    'ProPlayX FOCO Franchise Inquiry (Option A: 75/25 Profit Share)'
   );
 
   const handleSelectModel = (modelText) => {
@@ -40,7 +43,7 @@ export default function FranchisePage() {
             }}
           >
             <span style={{ width: '22px', height: '1px', background: '#4FE3ED', display: 'inline-block' }}></span>
-            Page 01 — Franchise Options
+            Page 01 — Franchise Options &amp; FOCO Business Plan
           </div>
           <h1
             style={{
@@ -52,23 +55,23 @@ export default function FranchisePage() {
               lineHeight: 1.1,
             }}
           >
-            The Blu Racquet Club Franchise Concept
+            Franchise Owned, Company Operated (FOCO) Model
           </h1>
           <p
             style={{
               color: '#A6BAC4',
               fontSize: '1.15rem',
-              maxWidth: '680px',
+              maxWidth: '720px',
               margin: '0 0 2rem',
               lineHeight: 1.7,
             }}
           >
-            Partner with ProPlayX to launch premier multi-racket destinations across India. Combining padel, pickleball, and badminton under a singular lifestyle club brand.
+            A seamless opportunity in India's booming pickleball and racket sports market. You own the asset; ProPlayX drives the performance through technology, centralized operations, coaching, and event networks.
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <a
-              href="#franchise-comparator"
+              href="#franchise"
               style={{
                 background: '#4FE3ED',
                 color: '#060a0f',
@@ -76,38 +79,53 @@ export default function FranchisePage() {
                 borderRadius: '2px',
                 fontWeight: 800,
                 fontSize: '.85rem',
+                textDecoration: 'none',
               }}
             >
-              Compare FOCO vs FOFO Models
+              Explore Commercial Models
             </a>
             <a
-              href="#contact"
+              href={contactInfo.businessPlanPdf}
+              download="ProPlayX_FOCO_Business_Plan.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
-                background: 'transparent',
-                color: '#F7F9FA',
-                border: '1px solid rgba(255, 255, 255, 0.3)',
+                background: 'rgba(79, 227, 237, 0.12)',
+                color: '#7FEAF0',
+                border: '1px solid #4FE3ED',
                 padding: '.85rem 1.6rem',
                 borderRadius: '2px',
-                fontWeight: 600,
+                fontWeight: 700,
                 fontSize: '.85rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '.5rem',
+                textDecoration: 'none',
               }}
             >
-              Submit Franchise Inquiry
+              <i className="fas fa-file-pdf"></i>
+              <span>Download Business Plan PDF</span>
             </a>
           </div>
         </div>
       </section>
 
-      {/* 1. Core Franchise Concept (Blu Racquet Club) */}
+      {/* 1. Core FOCO Advantage & Commercial Models (Page 1 & 3 of PDF) */}
       <Franchise />
 
-      {/* 2. Interactive FOCO vs FOFO Model Comparator & Quiz */}
+      {/* 2. What ProPlayX Delivers (Page 2 of PDF: 6 Deliverable Pillars) */}
+      <PpxDeliverables />
+
+      {/* 3. Unit Economics & Monthly Revenue Projections (Page 4 of PDF) */}
+      <UnitEconomics />
+
+      {/* 4. Interactive Role Comparator & Matching Quiz */}
       <FranchiseComparator onSelectModel={handleSelectModel} />
 
-      {/* 3. National Expansion Roadmap 2026-2028 */}
+      {/* 5. National Expansion Roadmap 2026-2028 */}
       <Roadmap />
 
-      {/* 4. Dedicated Franchise Inquiry Form */}
+      {/* 6. Dedicated Franchise Inquiry Form */}
       <ContactSection prefilledSpec={selectedFranchiseModel} />
     </div>
   );

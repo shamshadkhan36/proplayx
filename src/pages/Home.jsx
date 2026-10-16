@@ -4,7 +4,7 @@ import Hero from '../components/Hero';
 import SportsStrip from '../components/SportsStrip';
 import GearShowcase from '../components/GearShowcase';
 import GearStudio from '../components/GearStudio';
-import { sports } from '../data/content';
+import { focoAdvantage, contactInfo } from '../data/content';
 
 export default function Home() {
   return (
@@ -19,7 +19,7 @@ export default function Home() {
       <section id="what-we-do" style={{ padding: '6.5rem 0', background: '#F7F9FA' }}>
         <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '0 1.5rem' }}>
           {/* Header */}
-          <div style={{ maxWidth: '680px', marginBottom: '3.5rem' }}>
+          <div style={{ maxWidth: '720px', marginBottom: '3.5rem' }}>
             <div
               style={{
                 display: 'flex',
@@ -48,14 +48,73 @@ export default function Home() {
                 lineHeight: 1.15,
               }}
             >
-              We engineer world-class courts. Then we run them to perfection.
+              You own the asset; we drive the performance.
             </h2>
             <p style={{ color: '#5B6670', fontSize: '1.05rem', lineHeight: 1.7, margin: 0 }}>
-              ProPlayX is India's leading sports infrastructure and club operations ecosystem. We solve both halves of the sports facility equation: building tournament-grade courts and running active, staffed, and profitable venues.
+              ProPlayX (PPX) introduces a seamless, high-performance sports infrastructure management ecosystem. We combine investor capital with PPX's deep domain expertise, proprietary booking app, and established event networks to maximize court occupancy from day one.
             </p>
           </div>
 
-          {/* Dual Pillars: Infrastructure + Operations */}
+          {/* 4 Pillars of the PPX Advantage from the Proposal */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '1.6rem',
+              marginBottom: '3.5rem',
+            }}
+          >
+            {focoAdvantage.map((card, idx) => (
+              <div
+                key={idx}
+                style={{
+                  background: '#fff',
+                  border: '1px solid rgba(15, 143, 156, 0.2)',
+                  borderRadius: '16px',
+                  padding: '1.8rem',
+                  boxShadow: '0 10px 25px rgba(11, 20, 32, 0.03)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <div>
+                  <div
+                    style={{
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '10px',
+                      background: '#ECF8F9',
+                      color: '#0E8F9C',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '1.2rem',
+                      marginBottom: '1.2rem',
+                    }}
+                  >
+                    <i className={card.icon}></i>
+                  </div>
+                  <h3
+                    style={{
+                      fontFamily: "'Bricolage Grotesque', sans-serif",
+                      fontSize: '1.18rem',
+                      margin: '0 0 .6rem',
+                      color: '#10161C',
+                      fontWeight: 700,
+                    }}
+                  >
+                    {card.title}
+                  </h3>
+                  <p style={{ color: '#5B6670', fontSize: '.88rem', lineHeight: 1.6, margin: 0 }}>
+                    {card.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Dual Pillars: Turnkey Construction + Complete Operations */}
           <div
             style={{
               display: 'grid',
@@ -95,20 +154,20 @@ export default function Home() {
                   <i className="fas fa-hammer"></i>
                 </div>
                 <span style={{ fontSize: '.72rem', color: '#0E8F9C', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '.08em' }}>
-                  Pillar 01 — Construction
+                  Pillar 01 — Construction &amp; Engineering
                 </span>
                 <h3 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: '1.5rem', margin: '.4rem 0 1rem', color: '#10161C' }}>
-                  Turnkey Court Construction
+                  Standardized Turnkey Buildout
                 </h3>
                 <p style={{ color: '#5B6670', fontSize: '.95rem', lineHeight: 1.7, margin: '0 0 1.5rem' }}>
-                  From raw land, terrace rooftops, and warehouses to finished tournament courts. We design and build regulation pickleball, panoramic padel, badminton, and multi-sport turfs adhering strictly to USAPA, FIP, and BWF standards.
+                  From civil works and asphalt base laying (Rs 120/sq ft) to installing specialized 5-layer synthetic surfaces (Rs 55/sq ft), customized 20ft fencing nets, and professional 500-lux sports lighting. Single court setup starts at ₹4,89,000.
                 </p>
 
                 <ul style={{ color: '#5B6670', fontSize: '.9rem', paddingLeft: '1.2rem', margin: '0 0 1.8rem', lineHeight: 1.8 }}>
-                  <li>Civil sub-base and drainage engineering</li>
-                  <li>8-layer cushion acrylic &amp; 12mm toughened glass enclosures</li>
-                  <li>Tournament LED floodlighting (500 Lux) &amp; weatherproofing</li>
-                  <li>Fast turnaround: 18 to 35 days delivery</li>
+                  <li>Asphalt base preparation &amp; slope drainage</li>
+                  <li>Specialized 5-layer synthetic acrylic surface</li>
+                  <li>Perimeter safety netting up to 20ft height</li>
+                  <li>Fast turnaround: 18 to 35 days full handover</li>
                 </ul>
               </div>
 
@@ -121,9 +180,10 @@ export default function Home() {
                   color: '#0E8F9C',
                   fontWeight: 800,
                   fontSize: '.9rem',
+                  textDecoration: 'none',
                 }}
               >
-                <span>View Court Costing &amp; Construction Specs</span>
+                <span>View Single Court Costing Breakdown (₹4.89L)</span>
                 <i className="fas fa-arrow-right"></i>
               </Link>
             </div>
@@ -160,20 +220,20 @@ export default function Home() {
                   <i className="fas fa-trophy"></i>
                 </div>
                 <span style={{ fontSize: '.72rem', color: '#7FEAF0', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '.08em' }}>
-                  Pillar 02 — Operations
+                  Pillar 02 — FOCO Operations
                 </span>
                 <h3 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: '1.5rem', margin: '.4rem 0 1rem', color: '#F7F9FA' }}>
-                  Club &amp; Venue Management
+                  Comprehensive Facility Management
                 </h3>
                 <p style={{ color: '#9FB2BC', fontSize: '.95rem', lineHeight: 1.7, margin: '0 0 1.5rem' }}>
-                  Setting up a court is half the job — keeping it fully utilized, staffed, and professionally run is the rest. We manage day-to-day execution end to end through the Blu Racquet Club platform.
+                  Under the FOCO agreement, PPX acts as your full operational partner. We handle hiring, court managers, coaching programs, walk-ins, memberships, and digital marketing, while providing monthly P&amp;L reports.
                 </p>
 
                 <ul style={{ color: '#9FB2BC', fontSize: '.9rem', paddingLeft: '1.2rem', margin: '0 0 1.8rem', lineHeight: 1.8 }}>
-                  <li>Blu Racquet Club app for slot bookings &amp; automated check-in</li>
-                  <li>Certified coaching academies, open plays, and corporate leagues</li>
-                  <li>Standardized daily court maintenance &amp; gear upkeep</li>
-                  <li>Targeted player marketing to maximize venue occupancy</li>
+                  <li>Integrated PPX Booking App with zero double-bookings</li>
+                  <li>Manpower recruitment &amp; certified coaching staff</li>
+                  <li>Centralized digital marketing, local SEO, and corporate events</li>
+                  <li>Two commercial models: 75/25 Profit Share or 10% Top-Line Fee</li>
                 </ul>
               </div>
 
@@ -186,9 +246,10 @@ export default function Home() {
                   color: '#4FE3ED',
                   fontWeight: 800,
                   fontSize: '.9rem',
+                  textDecoration: 'none',
                 }}
               >
-                <span>Explore Blu Racquet Club Franchise Options</span>
+                <span>Explore FOCO Commercial Options</span>
                 <i className="fas fa-arrow-right"></i>
               </Link>
             </div>
@@ -223,7 +284,6 @@ export default function Home() {
                 gap: '1.5rem',
               }}
             >
-              {/* Box 1 */}
               <Link
                 to="/franchise"
                 style={{
@@ -234,32 +294,23 @@ export default function Home() {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '.5rem',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#0E8F9C';
-                  e.currentTarget.style.transform = 'translateY(-3px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(16,22,28,0.08)';
-                  e.currentTarget.style.transform = 'translateY(0)';
+                  textDecoration: 'none',
                 }}
               >
                 <div style={{ color: '#0E8F9C', fontSize: '1.3rem' }}>
                   <i className="fas fa-store"></i>
                 </div>
                 <h4 style={{ margin: 0, fontSize: '1.05rem', color: '#10161C', fontFamily: "'Bricolage Grotesque', sans-serif" }}>
-                  Franchise Options
+                  Franchise Options (FOCO)
                 </h4>
                 <p style={{ margin: 0, fontSize: '.84rem', color: '#5B6670', lineHeight: 1.5 }}>
-                  FOCO &amp; FOFO partnership models, Blu Racquet Club rollout, and 2026-2028 roadmap.
+                  Option A (75/25 profit share) vs Option B (10% fee), unit economics, and 2026-2028 roadmap.
                 </p>
                 <span style={{ fontSize: '.8rem', color: '#0E8F9C', fontWeight: 800, marginTop: '.5rem' }}>
                   Explore Models &#8594;
                 </span>
               </Link>
 
-              {/* Box 2 */}
               <Link
                 to="/construction"
                 style={{
@@ -270,32 +321,23 @@ export default function Home() {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '.5rem',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#0E8F9C';
-                  e.currentTarget.style.transform = 'translateY(-3px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(16,22,28,0.08)';
-                  e.currentTarget.style.transform = 'translateY(0)';
+                  textDecoration: 'none',
                 }}
               >
                 <div style={{ color: '#0E8F9C', fontSize: '1.3rem' }}>
                   <i className="fas fa-ruler-combined"></i>
                 </div>
                 <h4 style={{ margin: 0, fontSize: '1.05rem', color: '#10161C', fontFamily: "'Bricolage Grotesque', sans-serif" }}>
-                  Court Costing &amp; Construction
+                  Court Costing (₹4.89L Base)
                 </h4>
                 <p style={{ margin: 0, fontSize: '.84rem', color: '#5B6670', lineHeight: 1.5 }}>
-                  Pricing spec sheet, interactive SVG Design Studio, and step-by-step engineering timeline.
+                  Official single court costing spec sheet, interactive SVG Design Studio, and process.
                 </p>
                 <span style={{ fontSize: '.8rem', color: '#0E8F9C', fontWeight: 800, marginTop: '.5rem' }}>
                   Design &amp; Cost &#8594;
                 </span>
               </Link>
 
-              {/* Box 3 */}
               <Link
                 to="/about"
                 style={{
@@ -306,15 +348,7 @@ export default function Home() {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '.5rem',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#0E8F9C';
-                  e.currentTarget.style.transform = 'translateY(-3px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(16,22,28,0.08)';
-                  e.currentTarget.style.transform = 'translateY(0)';
+                  textDecoration: 'none',
                 }}
               >
                 <div style={{ color: '#0E8F9C', fontSize: '1.3rem' }}>
@@ -331,7 +365,6 @@ export default function Home() {
                 </span>
               </Link>
 
-              {/* Box 4 */}
               <Link
                 to="/contact"
                 style={{
@@ -342,15 +375,7 @@ export default function Home() {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '.5rem',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#0E8F9C';
-                  e.currentTarget.style.transform = 'translateY(-3px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(16,22,28,0.08)';
-                  e.currentTarget.style.transform = 'translateY(0)';
+                  textDecoration: 'none',
                 }}
               >
                 <div style={{ color: '#0E8F9C', fontSize: '1.3rem' }}>
@@ -405,12 +430,16 @@ export default function Home() {
                 fontWeight: 800,
                 fontSize: '.9rem',
                 letterSpacing: '.04em',
+                textDecoration: 'none',
               }}
             >
               Get in Touch with ProPlayX
             </Link>
-            <Link
-              to="/construction"
+            <a
+              href={contactInfo.businessPlanPdf}
+              download="ProPlayX_FOCO_Business_Plan.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 background: 'transparent',
                 color: '#F7F9FA',
@@ -419,10 +448,15 @@ export default function Home() {
                 borderRadius: '4px',
                 fontWeight: 700,
                 fontSize: '.9rem',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '.5rem',
               }}
             >
-              Explore Court Costing
-            </Link>
+              <i className="fas fa-file-pdf"></i>
+              <span>Download Business Plan PDF</span>
+            </a>
           </div>
         </div>
       </section>

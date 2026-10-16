@@ -475,20 +475,23 @@ export default function ContactSection({ prefilledSpec }) {
                     }}
                   >
                     <option value="">Select requirement</option>
-                    <option value="Court Construction & Design">
-                      Court Construction &amp; Design
+                    <option value="Single Court Construction (₹4.89L Capex Package)">
+                      Single Court Turnkey Construction (₹4.89L Package)
                     </option>
-                    <option value="Blu Racquet Club Franchise Inquiry">
-                      Blu Racquet Club Franchise Inquiry
+                    <option value="Option A: FOCO Franchise (75/25 Profit Share)">
+                      Option A: FOCO Franchise (75% / 25% Net Profit Share)
                     </option>
-                    <option value="Facility Management & Operations">
-                      Facility Management &amp; Operations
+                    <option value="Option B: Facility Operations (10% Top-Line Fee)">
+                      Option B: Turnkey Facility Operations (10% Gross Fee)
                     </option>
-                    <option value="Land / Venue Rental Collaboration">
-                      Land / Venue Rental Collaboration
+                    <option value="Land / Space Monetization (~2,000+ sq ft)">
+                      Land / Space Monetization Partnership (~2,000+ sq ft)
                     </option>
-                    <option value="School / College Sports Infra">
-                      School / College Sports Infra
+                    <option value="Custom Multi-Sport Arena / Padel / Badminton">
+                      Custom Multi-Sport Arena / Padel / Badminton
+                    </option>
+                    <option value="School / College / Corporate Sports Infra">
+                      School / College / Corporate Sports Infra
                     </option>
                   </select>
                 </div>
